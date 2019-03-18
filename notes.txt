@@ -1,0 +1,13 @@
+Autotest system include:
+    test of the API system
+    test TDM chanel for
+        StarHub network
+        MFHub network
+        DamaHub network
+    test TDMA chanel for
+ 	StarHub network
+        MFHub network
+        Inroute network
+        Hubless network
+    test of the management of the UHP modems
+
