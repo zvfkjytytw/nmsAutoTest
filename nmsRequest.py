@@ -1,10 +1,42 @@
 '''
 API requests to NMS
 '''
-import nmsObject
+import requests
+import json
 
-class nmsRequest:
+class nmsRequest(object):
 
+    def __init__(self, nms_ip, api_key, obj_type):
+        self.obj_type = obj_type
+        self.session = requests.Session()
+#        self.nms_ip = nms_ip
+#        self.api_key = api_key
+        self.url = r"http://" + nms_ip + r"/jsonapi/?token=" + api_key + r"&out=json"
+
+    def select(self, id):
+        data = {"request":{
+                    "object": self.obj_type,
+                    "action": "select",
+                    "id": id
+        }}
+
+        result = self.session.post(url=self.url, data=json.dumps(data))
+        return result
+
+    def list(self):
+        data = {"request":{
+                    "object":self.obj.type,
+                    "action":"list"
+        }}
+        result = self.session.post(url=self.url, data=json.dumps(data))
+        return result
+
+    def insert(self, data):
+
+    def update(self, id, data):
+
+    def delete(self, id):
+"""
     nms_requests = ("select", "list", "insert", "update", "delete", "search")
     nms_ip = "10.0.2.5"
     api_key = "eastar"
@@ -40,5 +72,6 @@ class nmsRequest:
         import requests
         result requests.post(url=self.url, data=self.data)
         return result
+"""
 
 
